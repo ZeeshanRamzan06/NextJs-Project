@@ -53,7 +53,7 @@ export async function GET(request:Request){
 
         return Response.json({
             success:false,
-            meassage:'Error checking Username'
+            message:'Error checking Username'
         },{
             status:500
         })
