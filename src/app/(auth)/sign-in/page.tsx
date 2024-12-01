@@ -1,33 +1,8 @@
-"use client"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z  from "zod"
-import Link from 'next/link'
-import react from 'react'
-import {useState} from 'react'
-import { useDebounceValue } from 'usehooks-ts'
-import { useToast } from "@/hooks/use-toast"
-import { useRouter } from 'next/navigation'
-import {signUpSchema} from '@/schemas/signUpSchema'
-const page = () => {
-  const [username, setUsername] = useState('')
-  const [usernameMessage, setUsernameMessage] = useState('')
-  const [ischeckingusername, setIsCheckingUsername] = useState(false)
-  const [issubmitting, setIsSubmitting] = useState(false)
-  const debounceUsername=useDebounceValue(username,300)
-  const {toast} =useToast()
-  const router = useRouter()
-  const form = useForm({
-        resolver : zodResolver(signUpSchema),
-        defaultValues : {
-          username: "",
-          email: "",
-          password: ""
-        }
-  })
+import React from 'react'
 
+const page = () => {
   return (
-    <div>page</div>
+    <div>Sign In</div>
   )
 }
 

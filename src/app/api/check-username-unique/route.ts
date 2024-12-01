@@ -26,13 +26,12 @@ export async function GET(request:Request){
         //validation with zod
 
         const result =usernameQuerySchema.safeParse(queryParams)
-        console.log(result);
 
         if (!result.success) {
             const usernameError =result.error.format().username?._errors || []
             return Response.json({
                 success: false,
-                message:'Invalid Query Parameter'
+                message: usernameError?.length > 0 ? usernameError.join(', '):'Invalid Query Parameter'
             },{status:400})
         }
         const {username} =result.data
@@ -45,8 +44,8 @@ export async function GET(request:Request){
         }
         return Response.json({
             success: true,
-            message:'Username Is available'
-        },{status:400})
+            message:'Username is unique'
+        },{status:200})
 
     } catch (error) {
         console.error("Error checking username",error)
