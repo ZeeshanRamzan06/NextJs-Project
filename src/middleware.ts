@@ -6,31 +6,23 @@ import { getToken } from "next-auth/jwt"
 export async function middleware(request: NextRequest) {
             const token = await getToken({req: request})
             const url = request.nextUrl
-            
-            // If the user is authenticated
-  if (token) {
-    // Prevent access to auth pages for logged-in users
-    if (
+  if (token && 
+    (
       url.pathname.startsWith('/sign-in') ||
       url.pathname.startsWith('/sign-up') ||
-      url.pathname.startsWith('/verify')  
-    ) {
+      url.pathname.startsWith('/verify')  ||
+      url.pathname.startsWith('/')  
+    )
+  ) {
+     {
       return NextResponse.redirect(new URL('/dashboard', request.url));
     }
-    // Allow access to all other routes for authenticated users
+    if(!token && url.pathname.startsWith('/dashboard')){
+      return NextResponse.redirect(new URL('/sign-in', request.url));
+    }
     return NextResponse.next();
   }
 
-  // If the user is not authenticated
-  if (
-    url.pathname.startsWith('/dashboard') || // Protect dashboard routes
-    url.pathname.startsWith('/verify') // Protect verification routes
-  ) {
-    return NextResponse.redirect(new URL('/sign-in', request.url));
-  }
-
-  // Allow access to public routes (e.g., /sign-in, /sign-up, /home)
-  return NextResponse.next();
 }
  
 // See "Matching Paths" below to learn more

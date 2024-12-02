@@ -41,7 +41,6 @@ const page = () => {
         setUsernameMessage('')
         try {
           const response = await axios.get(`/api/check-username-unique?username=${username}`)
-          console.log(response.data.message)
           setUsernameMessage(response.data.message)
         } catch (error) {
           const axiosEror = error as AxiosError<ApiResponce>
@@ -63,6 +62,7 @@ const onSubmit = async (data: z.infer<typeof signUpSchema>)=>{
           description: response.data.message
         })
         router.replace(`/verify/${username}`)
+        console.log("redirecting" ,`/verify/${username}`)
         setIsSubmitting(false)
 
       } catch (error) {
