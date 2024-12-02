@@ -22,7 +22,7 @@ const page = () => {
   const [usernameMessage, setUsernameMessage] = useState('')
   const [ischeckingusername, setIsCheckingUsername] = useState(false)
   const [issubmitting, setIsSubmitting] = useState(false)
-  const debounce=useDebounceCallback(setUsername ,300)
+  const debounced =useDebounceCallback(setUsername ,200)
   const {toast} =useToast()
   const router = useRouter()
   const form = useForm<z.infer< typeof signUpSchema>>({
@@ -34,13 +34,14 @@ const page = () => {
         }
   })
   useEffect( ()=>{
+
     const checkUsernameUnique = async () => {
-      if(setUsername){
+      if(username){
         setIsCheckingUsername(true)
         setUsernameMessage('')
         try {
-          const response = await axios.get(`/api/check-username-unique?username=${setUsername}`)
-          
+          const response = await axios.get(`/api/check-username-unique?username=${username}`)
+          console.log(response.data.message)
           setUsernameMessage(response.data.message)
         } catch (error) {
           const axiosEror = error as AxiosError<ApiResponce>
@@ -52,7 +53,7 @@ const page = () => {
     }
   }
   checkUsernameUnique()
-  },[setUsername])
+  },[username])
 const onSubmit = async (data: z.infer<typeof signUpSchema>)=>{
       setIsSubmitting(true)
       try {
@@ -95,12 +96,12 @@ const onSubmit = async (data: z.infer<typeof signUpSchema>)=>{
               <Input placeholder="username" {...field} 
                 onChange={(e)=>{
                   field.onChange(e)
-                  debounce(e.target.value)
+                  debounced(e.target.value)
                 }}
                 />
               </FormControl>
               {ischeckingusername && <Loader2 className="animate-spin"/>}
-              <p className={`text-sm ${usernameMessage === 'Username is unique' ? 'text-green500' :'text-red-500'}`}>
+              <p className={`text-sm ${usernameMessage === 'Username is unique' ? 'text-green-500' :'text-red-500'}`}>
                 test {usernameMessage}
               </p>
               <FormMessage />
