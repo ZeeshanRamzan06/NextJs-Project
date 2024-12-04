@@ -12,9 +12,10 @@ import { User } from 'next-auth'
 import { useSession } from 'next-auth/react'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Message } from "@/models/User";
 
 const page = () => {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false)
   const [isSwitchLoading, setIsSwitchLoading] = useState(false)
 

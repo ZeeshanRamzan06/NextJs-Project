@@ -85,6 +85,13 @@ const onSubmit = async (data: z.infer<typeof signInSchema>)=>{
         </Button>
           </form>
         </Form>
+        <div className="text-center mt-4">
+          <p>If you don't have a account Please{' '}
+          <Link href='sign-up' className="text-blue-600 hover:text-blue-800">
+            Sign Up
+          </Link>
+          </p>
+        </div>
         
       </div>
     </div>

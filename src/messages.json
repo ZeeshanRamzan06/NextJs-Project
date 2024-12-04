@@ -1,0 +1,53 @@
+[
+    {
+      "title": "Welcome Message",
+      "content": "Welcome to our platform! Let us know if you need any assistance.",
+      "received": "2024-12-03T10:00:00Z"
+    },
+    {
+      "title": "Password Reset",
+      "content": "Your password reset request has been successfully processed. Click the link to set a new password.",
+      "received": "2024-12-03T10:15:00Z"
+    },
+    {
+      "title": "Subscription Confirmation",
+      "content": "Thank you for subscribing to our newsletter. Stay tuned for updates!",
+      "received": "2024-12-03T10:20:00Z"
+    },
+    {
+      "title": "Order Confirmation",
+      "content": "Your order #12345 has been confirmed. You will receive a shipping notification soon.",
+      "received": "2024-12-03T10:30:00Z"
+    },
+    {
+      "title": "Appointment Reminder",
+      "content": "This is a reminder for your appointment scheduled on 2024-12-04 at 11:00 AM.",
+      "received": "2024-12-03T11:00:00Z"
+    },
+    {
+      "title": "Feedback Request",
+      "content": "We value your feedback! Please take a moment to rate your recent experience with us.",
+      "received": "2024-12-03T11:15:00Z"
+    },
+    {
+      "title": "Promotional Offer",
+      "content": "Exclusive deal! Get 20% off on your next purchase. Offer valid till 2024-12-10.",
+      "received": "2024-12-03T11:30:00Z"
+    },
+    {
+      "title": "Security Alert",
+      "content": "We noticed a login attempt from a new device. If this was not you, please secure your account immediately.",
+      "received": "2024-12-03T11:45:00Z"
+    },
+    {
+      "title": "Event Invitation",
+      "content": "You're invited to our Annual Gala on 2024-12-15. RSVP by 2024-12-10.",
+      "received": "2024-12-03T12:00:00Z"
+    },
+    {
+      "title": "Payment Receipt",
+      "content": "Your payment of $150 has been successfully processed. Thank you for your purchase!",
+      "received": "2024-12-03T12:15:00Z"
+    }
+  ]
+  
