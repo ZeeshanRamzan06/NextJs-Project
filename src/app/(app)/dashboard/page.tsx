@@ -1,3 +1,4 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import MessageCard from '@/components/ui/MessageCard'
 import { Separator } from '@/components/ui/separator'
@@ -101,9 +102,9 @@ const page = () => {
     }
   }
 
-  const {username} = session?.user as User
-  const baseUrl = `${window.location.protocol} // ${window.location.host}`
-  const profileUrl = `${baseUrl}/u/${username}`
+  const { username = 'Guest' } = (session?.user as User) || {};
+const baseUrl = `${window.location.protocol}//${window.location.host}`;
+const profileUrl = `${baseUrl}/u/${username}`;
 
   const copyToClipboard = ()=>{
     navigator.clipboard.writeText(profileUrl)
@@ -160,7 +161,7 @@ const page = () => {
           <div className='mt-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
             {messages.length >0 ?(
               messages.map((message,index)=>(
-                <MessageCard key={message._id} message={message} onMessageDelete={handleDeleteMessage}/>
+                <MessageCard key={message.id} message={message} onMessageDelete={handleDeleteMessage}/>
               ))
             ):(
               <p>No messages to display</p>
